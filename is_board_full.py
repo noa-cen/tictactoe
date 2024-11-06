@@ -8,4 +8,4 @@ def is_board_full():
         else:
             full = False
         count += 1
-    return full
+    return full, count
