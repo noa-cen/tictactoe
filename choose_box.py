@@ -45,7 +45,7 @@ def choose_box():
             coordonate["row"] = 3
             coordonate["column"] = 3
         case _:
-            print("Les coordonnées ne sont pas bonne, veuillez les entrer à nouveau.")
+            print("Les coordonnées ne sont pas bonnes, veuillez les entrer à nouveau.")
             box_choice_ok = False
             while box_choice_ok == False:
                 return choose_box()
