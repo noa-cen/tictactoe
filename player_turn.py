@@ -1,9 +1,8 @@
-# Decides the player turn:
-def player_turn(sign1, sign2, count):
-    for n in count:
-        if n % 2 == 1:
-            player = sign1
-        elif n % 2 == 0:
-            player = sign2
-    print(f"{player} c'est ton tour de jouer.")
-    return player
+# Print the sign of the payer :
+def player_turn(board, coordonate, player):
+    if is_box_empty(board, coordonate) == True:
+        coordonate = player
+        return board
+    else:
+        print("Case déjà occupée, choisis une autre case.")
+        return choose_box()
