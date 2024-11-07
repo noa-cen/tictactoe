@@ -85,7 +85,8 @@ def is_box_empty(board, coordonate):
         return True
     else:
         return False
-    
+
+''' 
 # This function return if the board is full. Noa's Function
 def is_board_full():
     count = 1
@@ -97,7 +98,7 @@ def is_board_full():
             full = False
         count += 1
     return full
-
+'''  
 # Creation of a 'pretty' board game. Noa's Function
 def display_board(board):
     rows = len(board)
@@ -113,7 +114,7 @@ def player_turn(board, sign):
         board[coordonate["row"]][coordonate["column"]] = sign
     else:
         print("Case déjà occupée, choisis une autre case.")
-        return choose_box()
+        return player_turn(board,sign)
 
 # Check 8 possibilities of victory and return true or false. Maeva's Function
 def is_victory(sign,board):
@@ -136,12 +137,13 @@ def is_victory(sign,board):
     else:
         winner =  False
     return winner
-
-def who_won(board,sign):
+ 
+'''def who_won(board,sign):
     winner = is_victory(sign, board)
     if winner == True:
         return f"Le joueur du symbole {sign} a gagné"
-    
+ '''
+
 def game_on():
     board = [[" ", "A", "B", "C"], 
          ["1", " ", " ", " "], 
@@ -153,33 +155,31 @@ def game_on():
     display_board(board)
     sign1,sign2 = choose_sign()
     
+    
     winner = False
-    count = 1
-    while count < 10 | winner == False:
-
+    count = 0
+    while winner == False and count < 9:
+        print()
         print("Tour du joueur 1")
         player_turn(board, sign1)
         count += 1
         display_board(board)
-
         winner = is_victory(sign1, board)
-        victor = who_won(board,sign1)
-
-
-        if count < 10 | winner == False:
-
+        who_won = f"Le joueur 1 du symbole {sign1} a gagné !"
+        # victor = who_won(board,sign1)
+        if winner == False and count < 9:
+            print()
             print("Tour du joueur 2")
             player_turn(board, sign2)
-            count += 1
+            count +=1
             display_board(board)
-
             winner = is_victory(sign2, board)
-            victor = who_won(board,sign2)
-
-    if count == 9:
+            who_won = f"Le joueur 2 du symbole {sign2} a gagné !"
+            # victor = who_won(board,sign2)
+    if winner == True:
+        print(who_won)
+    elif count == 9:
+        print()
         print("Match Nul")
-        
-game_on()
 
-# print(f"Le joueur 1 du symbole {sign1} a gagné !")
-# print(f"Le joueur 2 du symbole {sign2} a gagné !")
+game_on()
