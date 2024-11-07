@@ -142,8 +142,7 @@ def is_victory(sign,board):
     winner = is_victory(sign, board)
     if winner == True:
         return f"Le joueur du symbole {sign} a gagné"
- '''
-
+'''
 def game_on():
     board = [[" ", "A", "B", "C"], 
          ["1", " ", " ", " "], 
